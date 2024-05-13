@@ -1,0 +1,104 @@
+﻿@model TbAbout
+
+
+@section Styles{
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Fill in this form</h4>
+            <p class="card-description"> Enter about us fields </p>
+            <form class="forms-sample" method="post" enctype="multipart/form-data"
+                  asp-controller="AboutUs" asp-action="Save" role="form">
+
+                <input asp-for="Id" type="hidden" />
+                
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Title</label>
+                    <input asp-for="Title" type="text" class="form-control" placeholder="@ResAdmin.lblTitle">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group" style="padding-bottom: 35px;">
+                    <label for="exampleTextarea1">Major</label>
+                    <textarea asp-for="Description" type="text" class="form-control" placeholder="@ResAdmin.lblDescription" id="exampleTextarea1" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-gradient-primary me-2">@ResGeneral.lblSubmit</button>
+                <button class="btn btn-dark">Cancel</button>
+                @*<a href="/Admin/AboutUs/List" class="btn btn-dark">@ResGeneral.lblCancel</a>*@
+            </form>
+        </div>
+    </div>
+
+</div>
+    
+</div>
+
+@*This is JS for rendering photo*@
+@section Scripts
+    {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/file-upload.js"></script>
+    <script src="~/Admin/js/typeahead.js"></script>
+    <script src="~/Admin/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

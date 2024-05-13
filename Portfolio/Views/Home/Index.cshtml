@@ -1,0 +1,339 @@
+﻿@model VwHomeModel 
+
+
+@section Styles{
+    <link href="~/frontend/css/css1.css" rel="stylesheet" />
+    <link href="~/frontend/css/toaster.css" rel="stylesheet" />
+    
+}
+
+
+
+ <!-- ======= Hero Section ======= -->
+<section style="height: 93vh;background: #a69ebc87;border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;" id="hero" class="d-flex align-items-center">
+   
+    <div style="padding-bottom: 3%;" class="container">
+      <div class="row gy-4">
+
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1 style="color: rebeccapurple;text-align: center;">
+                    @Model.Home.Name
+                </h1>
+                <h2 style=" color: #0f0621c2;font-weight: bolder;text-align: center;">
+                    @Model.Home.Major
+                </h2>
+                <div style="padding-top: 30px;text-align: center;">
+                    <button class="button">
+                                <a asp-controller="Home" asp-action="DownloadFile" asp-route-Id="@Model.Home.Id"
+                                   style="color:#fff;text-decoration:none;"> <span class="button-content">Download CV</span></a>
+                    </button>
+                </div>
+
+                <div class="row">
+                    <ul style="text-align:center;padding-right: 50px;padding-top: 25px;" class="social-icons">
+                        <li><a id="linkedin" href="#" target="_blank" ><i class="fa fa-linkedin"></i></a></li>
+                        <li><a id="github" href="#" target="_blank" ><i class="fa fa-github"></i></a></li>
+                        <li><a id="twitter" href="#" target="_blank" ><i class="fa fa-twitter"></i></a></li>
+                        
+                    </ul>
+                </div>
+
+        </div>
+
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                <img style="animation: up-down 1s ease-in-out infinite alternate-reverse " src="/Uploads/home/@Model.Home.ImageName" class="img-fluid animated" alt="">
+        </div>
+      </div>
+
+        
+    </div>
+
+
+
+
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section style="padding: 95px 0;" id="about" class="about">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
+                    <img style="animation: up-down 1s ease-in-out infinite alternate-reverse " src="/Uploads/home/about-us.png" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+                <div style="padding-top: 5rem!important;" class="col-lg-6 pt-5 pt-lg-0">
+                    <h3 style="color: #150467;text-align: center;" data-aos="fade-up">
+                        @Model.AboutUs.Title
+                    </h3>
+            <p style="font-weight: 600; color: black;" data-aos="fade-up" data-aos-delay="100">
+                    @Model.AboutUs.Description
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+    <!-- ======= Services Section ======= -->
+    <section style="background:#a69ebc87; padding: 95px 0; border-radius: 20px;" id="services" class="services section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2 style="color: rebeccapurple;font-weight: bolder;FONT-SIZE: 32px;">
+                    Services
+                </h2>
+                <p>Check out the great services we offer</p>
+            </div>
+
+            <div class="row">
+
+                @foreach(var service in Model.Services){
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div >
+                                <img src="/Uploads/services/@service.ImageName">
+                                
+                                </div>
+                            <h4 class="title"><a  href="">@service.ServiceName</a></h4>
+                            <p class="description">@service.Description</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+
+
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section  id="portfolio" class="portfolio">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+                <h2 style="    color: rebeccapurple;font-weight: bolder;FONT-SIZE: 32px;">
+                    Portfolio
+                </h2>
+          <p>Check out our beautifull portfolio</p>
+        </div>
+        
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-12">
+         
+            <ul  id="portfolio-flters">
+
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app"> Web App</li>
+              <li data-filter=".filter-web">Mobile App</li>
+              <li data-filter=".filter-card">Blogs</li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+             @foreach (var project in Model.listWebApp)
+            {
+                  <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                      <img src="/Uploads/projects/@project.ImageName" class="img-fluid" alt="">
+                      <div class="portfolio-links">
+                                <a href="/Uploads/projects/@project.ImageName" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@project.ProjectName"><i class="bi bi-plus"></i></a>
+                                <a href="@project.Link" title="More Details"><i class="bi bi-link"></i></a>
+                      </div>
+                      <div class="portfolio-info">
+                                        <h4>@project.ProjectName</h4>
+                                <p >@project.Description</p>
+                      </div>
+                    </div>
+                  </div>
+              }
+          
+              @foreach (var project in Model.listMobileApp)
+             {
+                  <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                            <img src="/Uploads/projects/@project.ImageName" class="img-fluid" alt="">
+                      <div class="portfolio-links">
+                                <a href="/Uploads/projects/@project.ImageName" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@project.ProjectName"><i class="bi bi-plus"></i></a>
+                                <a href="@project.Link" title="More Details"><i class="bi bi-link"></i></a>
+                      </div>
+                      <div class="portfolio-info">
+                                <h4>@project.ProjectName</h4>
+                                <p>@project.Description</p>
+                      </div>
+                    </div>
+                  </div>
+             }
+
+
+
+
+
+              @foreach (var project in Model.listBlogs)
+             {
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                            <img src="/Uploads/projects/@project.ImageName" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="/Uploads/projects/@project.ImageName" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@project.ProjectName"><i class="bi bi-plus"></i></a>
+                                <a href="@project.Link" title="More Details"><i class="bi bi-link"></i></a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>@project.ProjectName</h4>
+                                <p >@project.Description</p>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+
+
+
+        </div>
+
+      </div>
+      
+    </section><!-- End Portfolio Section -->
+
+
+
+
+
+    <!-- ======= Clients Section ======= -->
+    <section style="background-color: #a69ebc4f; border-radius: 20px;" id="team" class="clients section-bg">
+        <div style="padding: 133px 0;" class="container" data-aos="fade-up">
+
+        <div class="section-title">
+                
+                <p style ="color: rebeccapurple;font-weight: bolder;FONT-SIZE: 32px;">Skills</p>
+        </div>
+
+            <div style="animation: up-down 1s ease-in-out infinite alternate-reverse;padding: 20px; " class="clients-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper align-items-center">
+              
+                    @{
+                        foreach(var skill in Model.listSkills)
+                        {
+                            <div class="swiper-slide"><img style="opacity: 1.5;" src="/Uploads/skills/@skill.ImageName" class="img-fluid" alt=""></div>
+                        }
+                    }
+
+
+              
+                    
+          </div>
+               
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                
+             <p >Contact US</p>
+            </div>
+
+            <div class="row">
+
+
+
+
+
+                <div style="background: -webkit-linear-gradient(left, #ffffff, #ffffff);" class="contact1">
+                        <div class="container-contact1">
+                            <div class="contact1-pic js-tilt" data-tilt>
+                            <img src="~/CFE/images/img-01.png" alt="IMG">
+                            </div>
+
+                            <form asp-controller="Home" asp-action="Save" method="post" role="form" class="contact1-form validate-form" form name="contact" data-netlify="true">
+                                <span class="contact1-form-title">
+                                    Send To Me a Message
+                                </span>
+
+                           
+
+                                <div class="wrap-input1 validate-input" data-validate="Name is required ">
+                                <input input asp-for=@Model.Messages.Name class="input1" type="text" name="name" placeholder="Name" style="text-align:center">
+                                <span  class="shadow-input1"></span>
+                                  
+                                </div>
+                                 
+
+                            <div class="wrap-input1 validate-input" data-validate="Please enter a valid address: ex@abc.xyz">
+                                <input input asp-for=@Model.Messages.Email class="input1" type="text" name="email" placeholder="Email" style="text-align:center">
+                                    <span class="shadow-input1"></span>
+                                </div>
+
+                                <div class="wrap-input1 validate-input" data-validate="Subject Name is required required">
+                                <input input asp-for=@Model.Messages.Subject class="input1" type="text" name="subject" placeholder="Subject" style="text-align:center">
+                                    <span class="shadow-input1"></span>
+                                </div>
+
+                            <div class="wrap-input1 validate-input" data-validate="Message Name is required required">
+                                <textarea input asp-for=@Model.Messages.Message class="input1" name="message" placeholder="Message" style="text-align:center;padding-top: 60px;">
+
+                                </textarea>
+                                    <span class="shadow-input1"></span>
+                                </div>
+
+                                <div class="container-contact1-form-btn">
+                                <button class="button" button type="submit" onclick="showSuccessToast()">
+                                    <span class="button-content">
+                                            Send Message
+
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                
+
+            </div>
+
+      </div>
+
+    </section>
+    <!-- End Contact Us Section -->
+
+
+  </main><!-- End #main -->
+
+@section Scripts{
+
+    @*API Respones*@
+        <script src="~/modules/helper.js"></script>
+        <script src="~/modules/informations.js"></script>
+
+
+
+
+}
+
+
+@* // For toast alert. *@
+@await Component.InvokeAsync("NToastNotify")

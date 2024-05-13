@@ -1,0 +1,140 @@
+﻿@model VwDashboardModel
+
+
+@section Styles{
+     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+}
+
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-home"></i>
+            </span> Dashboard
+        </h3>
+        <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 stretch-card grid-margin" style="
+             height: 210px;">
+           
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                    <div class="card-body">
+                    <a asp-controller="Categories" asp-action="list" style="color:white">  <img src="~/Admin/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">  </a>
+                        <h2 class="font-weight-normal mb-3" style="font-weight: bold;">
+                              Categories
+                        <i class="mdi mdi-chart-line text-white mdi-24px float-end"></i>    
+                        </h2>
+                        <br />
+                        <br />
+                        <h2 class="mb-5">@Model.NumOfCategories</h2>
+                   
+                    </div>
+                </div>
+           
+         
+        </div>
+
+        <div class="col-md-4 stretch-card grid-margin"style="
+             height: 210px;">
+            <div class="card bg-gradient-info card-img-holder text-white">
+                <div class="card-body">
+                    <a asp-controller="projects" asp-action="list">
+                        <img src="~/Admin/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                    </a>
+                    <h2 class="font-weight-normal mb-3" style="font-weight: bold;">
+                        Projects
+                        <i class="mdi mdi mdi-code-not-equal-variant mdi-24px float-end"></i>   
+                    </h2>
+                    <br />
+                    <br />
+                    <h2 class="mb-5">@Model.NumOfProjects</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 stretch-card grid-margin" style="
+             height: 210px;">
+            <div class="card bg-gradient-success card-img-holder text-white">
+                <div class="card-body">
+                    <a asp-controller="services" asp-action="list">
+                        <img src="~/Admin/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                    </a>
+                    <h2 class="font-weight-normal mb-3" style="font-weight: bold;">
+                        Services 
+                        <i class="mdi mdi mdi-checkbox-marked-circle-outline mdi-24px float-end"></i>  
+                    </h2>
+                    <br />
+                    <br />
+                    <h2 class="mb-5">@Model.NumOfServices</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 stretch-card grid-margin" style="
+             height: 210px;">
+            <div class="card bg-gradient-dark card-img-holder text-white">
+                <div class="card-body">
+                    <a asp-controller="messages" asp-action="list">
+                        <img src="~/Admin/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                    </a>
+                    <h2 class="font-weight-normal mb-3" style="font-weight: bold;">
+                        Messages 
+                        <i class="mdi mdi-forum mdi-24px float-end"></i>   
+                    </h2>
+                    <br />
+                    <br />
+                    <h2 class="mb-5">@Model.NumOfMessages</h2>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 stretch-card grid-margin" style="
+             height: 210px;">
+            <div class="card bg-gradient card-img-holder text-white">
+                <div class="card-body">
+                    <a asp-controller="skills" asp-action="list">
+                        <img src="~/Admin/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                    </a>
+                    <h2 class="font-weight-normal mb-3" style="font-weight: bold;">
+                        Skills 
+                        <i class="mdi mdi mdi-language-csharp mdi-24px float-end"></i>  
+                    </h2>
+                    <br />
+                    <br />
+                    <h2 class="mb-5">@Model.NumOfSkills</h2>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+</div>
+
+@section Scripts{
+
+        <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/Admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+}

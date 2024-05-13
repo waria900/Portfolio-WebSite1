@@ -1,0 +1,51 @@
+﻿@model TbHome
+
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Home Section</h4>
+            <p class="card-description">
+                <a asp-controller="Homes" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-gradient-primary btn-fw">@ResGeneral.lblEdit</a>
+            </p>
+
+            <div class="row">
+                <div class="table-sorter-wrapper col-lg-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> @ResAdmin.lblName </th>
+                                <th> @ResAdmin.lblMajor </th>
+                                <th> @ResAdmin.lblImage </th>
+                                <th> @ResAdmin.lblFile </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Model.Name </td>
+                                <td> @Model.Major </td>
+                                <td class="py-1">
+                                    <img src="/Uploads/home/@Model.ImageName" alt="image">
+                                </td>
+                                <td> @Model.FileName </td>
+
+
+                            </tr>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@* // For toast alert. *@
+@await Component.InvokeAsync("NToastNotify")
+
+

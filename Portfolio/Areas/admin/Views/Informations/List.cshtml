@@ -1,0 +1,57 @@
+﻿@model TbInformation
+
+
+@section Styles{
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+}
+
+
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">personal Section</h4>
+            <p class="card-description">
+                <a asp-controller="Informations" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-gradient-primary btn-fw">@ResGeneral.lblEdit</a>
+            </p>
+
+            <div class="row">
+                <div class="table-sorter-wrapper col-lg-12 table-responsive">
+
+                    <table  class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> @ResAdmin.lblFirstName </th>
+                                <th> @ResAdmin.lblSecondName </th>
+                                <th> @ResAdmin.lblTwitterLink</th>
+                                <th> @ResAdmin.lblLinkedinLink</th>
+                                <th> @ResAdmin.lblGithubLink</th>
+                                <th> @ResAdmin.lblEmail </th>
+                                <th> @ResAdmin.lblPhoneNumber </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Model.firstName </td>
+                                <td> @Model.secondName </td>
+                                <td> @Model.Twitter </td>
+                                <td> @Model.Linkedin </td>
+                                <td> @Model.Github </td>
+                                <td> @Model.Email </td>
+                                <td> @Model.Phone </td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* // For toast alert. *@
+@await Component.InvokeAsync("NToastNotify")

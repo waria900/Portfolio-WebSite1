@@ -1,0 +1,95 @@
+﻿@model TbInformation
+
+
+@section Styles{
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+
+<div class="col-md-6 grid-margin stretch-card" style="
+     margin: auto;">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Basic form elements</h4>
+            <p class="card-description"> Basic form elements </p>
+            <form class="forms-sample" method="post" enctype="multipart/form-data"
+                  asp-controller="informations" asp-action="Save" role="form">
+
+                <input asp-for="Id" type="hidden" />
+                @*<input asp-for="FileName" type="hidden" />
+                <input asp-for="ImageName" type="hidden" />*@
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">@ResAdmin.lblFirstName</label>
+                    <input asp-for="firstName" type="text" class="form-control" placeholder="@ResAdmin.lblFirstName">
+                    <span asp-validation-for="firstName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">@ResAdmin.lblSecondName</label>
+                    <input asp-for="secondName" type="text" class="form-control" placeholder="@ResAdmin.lblSecondName">
+                    <span asp-validation-for="secondName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">@ResAdmin.lblTwitterLink</label>
+                    <input asp-for="Twitter" type="text" class="form-control" placeholder="Enter twitter link">
+                    <span asp-validation-for="Twitter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputUsername1">@ResAdmin.lblGithubLink</label>
+                    <input asp-for="Github" type="text" class="form-control" placeholder="Enter github link">
+                    <span asp-validation-for="Github" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputUsername1">@ResAdmin.lblLinkedinLink</label>
+                    <input asp-for="Linkedin" type="text" class="form-control" placeholder="Enter linkedin link">
+                    <span asp-validation-for="Linkedin" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">@ResAdmin.lblPhoneNumber</label>
+                    <input asp-for="Phone" type="number" class="form-control" placeholder="@ResAdmin.lblPhoneNumber">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="padding-bottom: 35px;">
+                    <label for="exampleInputUsername1">@ResAdmin.lblEmail</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="@ResAdmin.lblEmail">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-gradient-primary me-2" >@ResGeneral.lblSubmit</button>
+                <a href="/Admin/informations/list" class="btn btn-dark">@ResGeneral.lblCancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@*This is JS for rendering photo*@
+@section Scripts
+    {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/file-upload.js"></script>
+    <script src="~/Admin/js/typeahead.js"></script>
+    <script src="~/Admin/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}
+
+
+

@@ -1,0 +1,43 @@
+﻿@model TbCategory
+
+
+@section Styles
+{
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Category Form</h4>
+        <br/>
+        <form class="forms-sample" method="post" enctype="multipart/form-data"
+              asp-controller="categories" asp-action="Save" role="form">
+
+            <input asp-for="CategoryId" type="hidden" />           
+            <input asp-for="CreatedBy" type="hidden" />
+            <input asp-for="CreatedDate" type="hidden" />
+            <input asp-for="CurrentState" type="hidden" />
+            <input asp-for="UpdatedBy" type="hidden" />
+            <input asp-for="UpdatedDate" type="hidden" />
+
+            <div class="form-group" style="padding-bottom: 35px;">
+                <label >@ResAdmin.lblCategoryName</label>
+                <input asp-for=CategoryName type="text" class="form-control" placeholder="@ResAdmin.lblCategoryName">
+                <br />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+
+            <button type="submit" formmethod="post" class="btn btn-gradient-primary me-2">@ResGeneral.lblSave</button>
+            <a href="/Admin/Categories/List" class="btn btn-dark">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}

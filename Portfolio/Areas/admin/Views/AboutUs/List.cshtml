@@ -1,0 +1,37 @@
+﻿@model TbAbout
+
+
+
+<div class="page-header">
+    <h3 class="page-title"> About us 😊 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">About us</a></li>
+            <li class="breadcrumb-item active" aria-current="page">About us UI</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+
+
+        <div class="col-md-6 grid-margin" style="margin:auto;">
+            <div class="card">
+                <div class="card-body" style="padding: 2.5rem 1.5rem;">
+                <h4 class="card-title" style="color:#80f;text-align:center">@Model.Title</h4>
+                    <div class="card card-inverse-info" id="context-menu-simple" style="padding-bottom: 25px;">
+                        <div class="card-body">
+                        <p class="card-text">@Model.Description</p>
+                        </div>
+                    <a asp-controller="AboutUs" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-gradient-primary btn-fw"> @ResGeneral.lblEdit</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    
+</div>
+
+@* // For toast alert. *@
+@await Component.InvokeAsync("NToastNotify")

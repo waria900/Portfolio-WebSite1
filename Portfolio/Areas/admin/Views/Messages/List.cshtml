@@ -1,0 +1,83 @@
+﻿@model List<TbMessage>
+
+@section Styles{
+    <!-- For Sweat Alert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.9/dist/sweetalert2.min.css">
+}
+
+
+<div class="page-header">
+    <h3 class="page-title"> Messages 📧 </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Messages</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Messages list</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+
+    @foreach (var @message in Model)
+    {
+        <div class="col-md-6 grid-margin" style="margin:auto;
+">
+            <div class="card">
+                <div class="card-body" style="padding: 2.5rem 1.5rem;">
+                    <h4 class="card-title" style="margin-right: 140px;display: inline-block;width: 170px;color:#80f;">@message.Name</h4>
+                    <p class="card-description" style="margin-right: 10px;display: inline-block;">@message.CreatedDate</p>
+                    <p class="card-description">@message.Email</p>
+                    <div class="card card-inverse-info" id="context-menu-simple" style="padding-bottom: 25px;">
+                        <div class="card-body">
+                            <p class="card-text">@message.Subject</p>
+                            <p class="card-text">@message.Message</p>
+                        </div>
+                        <button  data-messageid="@message.Id" class="btn btn-gradient-danger btn-rounded btn-fw message">Delete Message</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+
+@* // For toast alert. *@
+@await Component.InvokeAsync("NToastNotify")
+
+
+@section Scripts{
+
+    <!-- For Sweat Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.9/dist/sweetalert2.min.js"></script>
+    <!-- For Sweat Alert Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- For Sweat Alert Include JS -->
+    <script>
+        $(document).ready(function () {
+            // Handle delete button click
+            $(".message").on("click", function () {
+                var id = $(this).data("messageid");
+
+                Swal.fire({
+                    title: '<span style="color: black;">Confirm Delete</span>',
+                    text: 'Are you sure you want to delete this one?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User confirmed the delete, send the user ID to the "Delete" action
+                        window.location.href = "/Admin/Messages/Delete?id=" + id;
+                    }
+                });
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,68 @@
+﻿@model UserModel
+
+@{
+    Layout = "_Layout2";
+}
+
+@section Styles{
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Admin/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Admin/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/Admin/css/demo_3/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/Admin/images/favicon.png" />
+}
+
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+            <div class="row flex-grow">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left p-5">
+                        <div style="text-align: center;" class="brand-logo">
+                            <img src="https://cdn-icons-png.flaticon.com/128/9496/9496161.png">
+                        </div>
+                        <h4>Hello! let's get started</h4>
+                        <h6 class="font-weight-light">Sign in to continue.</h6>
+                        <form asp-controller="users" asp-action="login" method="post" class="pt-3">
+
+                            <input asp-for="ReturnUrl" type="hidden" />
+
+                            <div class="form-group">
+                                <input asp-for=Email type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input asp-for=Password type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                <span class="text-danger" > @TempData["error"]</span>
+                            </div>
+
+                            <button type="submit" formmethod="post" class="btn btn-gradient-primary me-2">Login</button>
+                            
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}
